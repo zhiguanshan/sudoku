@@ -27,6 +27,9 @@ public:
 	//检测-s参数后的文件路径
 	char* get_filename();
 
+	//检测-m参数后的路径
+	int get_difficulty();
+
 	//错误捕获
 	bool found_error();
 
@@ -34,6 +37,7 @@ private:
 	int argc;
 	char **argv;
 	int num;
+	int difficulty;
 	char type;
 	char* filename;
 	bool input_error;

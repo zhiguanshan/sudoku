@@ -8,20 +8,34 @@ Input::Input(int argc, char *argv[])
 	filename = NULL;
 	type = 0;
 	num = 0;
+	difficulty = 0;
 	input_error = false;
 }
 
 /*判断参数类型等信息*/
 void Input::input_type_analyse()
 {
-	//参数数量正确
-	if (argc == 3)
+	if(argc < 3)
 	{
-		//生成数独终局
+		input_error = true;
+		printf("参数数量过少\n");
+	}
+	else
+	{
+		//生成数独
 		if (strcmp(argv[1], "-c") == 0)
 		{
 			type = 'c';
 			num = tran_string_to_int(argv[2]);
+			if(argc == 5 && strcmp(argv[3], "-m") == 0)
+			{
+				difficulty = tran_string_to_int(argv[4]);
+				if(difficulty < 0 || difficulty > 5)
+				{
+					input_error=true;
+					printf("难度设置错误\n");
+				}
+			}
 		}
 		else if (strcmp(argv[1], "-s") == 0)//解数独
 		{
@@ -35,19 +49,14 @@ void Input::input_type_analyse()
 			if (err != 0)
 			{
 				input_error = true;
-				printf("The file you want to open doesn't exist\n");
+				printf("文件不存在\n");
 			}
 		}
 		else //参数错误
 		{
 			input_error = true;
-			printf("cmd input is anomalous! error found in method Input::inputTypeAnalyse()\n");
+			printf("参数输入错误! error found in method Input::inputTypeAnalyse()\n");
 		}
-	}
-	else
-	{
-		input_error = true;
-		cout << "参数数量有误"<< endl;
 	}
 }
 
@@ -59,6 +68,11 @@ char Input::get_type()
 int Input::get_num()
 {
 	return num;
+}
+
+int Input::get_difficulty()
+{
+	return difficulty;
 }
 
 char* Input::get_filename()
@@ -79,9 +93,6 @@ int Input::tran_string_to_int(char string[])
 	{
 		if (string[i] >= '0'&&string[i] <= '9')
 			temp_num = temp_num * 10 + (string[i] - '0');
-		else if(string[i] == '$'){
-
-		}
 		else
 		{
 			input_error = true;
