@@ -210,7 +210,7 @@ void SudokuOperation::solve_sudoku(char *filename)
 					for (j = 0; j < 9; j++)
 					{
 						char temp;
-						fscanf(rfile, "%c%c", &temp, &blank_or_enter, sizeof(char) + sizeof(char));
+						fscanf(rfile, "%c%c", &temp, &blank_or_enter);
 						if(temp >= '0'&& temp <= '9')
 						{
 							puzzle_matrix[i][j] = temp-'0';

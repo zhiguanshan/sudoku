@@ -27,6 +27,7 @@ void Input::input_type_analyse()
 		{
 			type = 'c';
 			num = tran_string_to_int(argv[2]);
+			difficulty=2;
 			if(argc == 5 && strcmp(argv[3], "-m") == 0)
 			{
 				difficulty = tran_string_to_int(argv[4]);
