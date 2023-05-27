@@ -236,3 +236,17 @@ void SudokuOperation::solve_sudoku(char *filename)
 	if (wfile != 0)
 		fclose(wfile);
 }
+
+int** SudokuOperation::get_move_step()
+{
+	int **matrix=new int*[72];
+	for(int i=0;i<72;i++)
+	{
+		matrix[i]=new int[9];
+		for(int j = 0; j < 9; j++)
+		{
+			matrix[i][j]=move_step_matrix[i][j];
+		}
+	}
+	return matrix;
+}

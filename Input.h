@@ -9,16 +9,16 @@ using namespace std;
 class Input
 {
 public:
-	/*初始化Input类*/
-	Input(int argc, char *argv[]);
-	
-	/*解析参数*/
+	//初始化Input类
+	Input(int argc, char* argv[]);
+
+	//解析参数
 	void input_type_analyse();
 
 	//读取的string转为int
 	int tran_string_to_int(char string[]);
 
-	/*解析参数*/
+	//解析参数
 	char get_type();
 
 	//检测-c参数后的数字
@@ -35,7 +35,7 @@ public:
 
 private:
 	int argc;
-	char **argv;
+	char** argv;
 	int num;
 	int difficulty;
 	char type;

@@ -32,6 +32,9 @@ public:
 	//用于检查数据放入数独的合法性
 	bool check(int i, int j, int n, int matrix[9][9]);
 
+	//用于单元检测时读取matrix
+	int** get_move_step();
+
 private:
 	//现有终局数
 	int num_now;
